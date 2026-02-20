@@ -1,0 +1,126 @@
+import { useEffect, useRef, useState } from 'react';
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
+const Location = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<'place' | 'meal' | 'parking'>('place');
+
+  useEffect(() => {
+    const loadMap = () => {
+      if (!window.kakao || !window.kakao.maps) return;
+
+      const options = {
+        center: new window.kakao.maps.LatLng(37.5609, 126.9793),
+        level: 3,
+      };
+
+      const map = new window.kakao.maps.Map(mapRef.current, options);
+
+      const marker = new window.kakao.maps.Marker({
+        position: new window.kakao.maps.LatLng(37.5609, 126.9793),
+      });
+
+      marker.setMap(map);
+    };
+
+    if (window.kakao && window.kakao.maps) {
+      loadMap();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src =
+      `https://dapi.kakao.com/v2/maps/sdk.js?appkey=be8e8a4d1436353e833cc80b30de74fa&autoload=false`;
+    script.async = true;
+
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        loadMap();
+      });
+    };
+
+    document.head.appendChild(script);
+  }, []);
+
+  return (
+    <section className="location section" id="location">
+      <div className="location__inner">
+
+        <p className="location__eyebrow">LOCATION</p>
+        <h2 className="location__title">오시는 길</h2>
+
+        <p className="location__address">
+          서울 중구 소공로 51 우리은행 본점 4층
+        </p>
+
+        <div
+          ref={mapRef}
+          className="location__map"
+        />
+
+        {/* 네비 버튼 */}
+        <div className="location__nav">
+          <a href="https://map.naver.com/p/search/우리은행본점/place/12127345" target="_blank">네이버지도</a>
+          <a href="https://place.map.kakao.com/1310395223" target="_blank">카카오맵</a>
+          <a href="https://www.tmap.co.kr" target="_blank">티맵</a>
+        </div>
+
+        {/* 탭 버튼 */}
+        <div className="location__tabs">
+          <button
+            className={activeTab === 'place' ? 'active' : ''}
+            onClick={() => setActiveTab('place')}
+          >
+            장소안내
+          </button>
+
+          <button
+            className={activeTab === 'meal' ? 'active' : ''}
+            onClick={() => setActiveTab('meal')}
+          >
+            식사안내
+          </button>
+
+          <button
+            className={activeTab === 'parking' ? 'active' : ''}
+            onClick={() => setActiveTab('parking')}
+          >
+            주차안내
+          </button>
+        </div>
+
+        {/* 탭 내용 */}
+        <div className="location__content">
+          {activeTab === 'place' && (
+            <ul>
+              <li>본식은 우리은행 본점 4층 웨딩홀에서 진행됩니다.</li>
+              <li>신부대기실은 엘리베이터 우측에 있습니다.</li>
+            </ul>
+          )}
+
+          {activeTab === 'meal' && (
+            <ul>
+              <li>피로연장은 7층입니다.</li>
+              <li>이용시간: 11:30 ~ 13:00</li>
+            </ul>
+          )}
+
+          {activeTab === 'parking' && (
+            <ul>
+              <li>B2 ~ B3층 주차 가능</li>
+              <li>당일 종일 무료 주차</li>
+            </ul>
+          )}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default Location;
