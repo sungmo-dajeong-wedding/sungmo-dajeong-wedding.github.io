@@ -7,7 +7,6 @@ interface GiftProps {
 export default function Gift({ setToastMessage }: GiftProps) {
 
   const [open, setOpen] = useState<string | null>(null)
-  const [copied, setCopied] = useState<string | null>(null);
 
   const groomAccounts = [
   {
