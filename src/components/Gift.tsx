@@ -1,16 +1,48 @@
 import { useState } from 'react'
 
-export default function Gift() {
+interface GiftProps {
+  setToastMessage: (msg: string) => void;
+}
+
+export default function Gift({ setToastMessage }: GiftProps) {
+
   const [open, setOpen] = useState<string | null>(null)
+  const [copied, setCopied] = useState<string | null>(null);
+
+  const groomAccounts = [
+  {
+    name: '신랑 김성모',
+    account: '신한은행 110-432-429303',
+  },
+  {
+    name: '신랑 아버지 김홍기',
+    account: '국민은행 123456-78-901234',
+  },
+  {
+    name: '신랑 어머니 이현진',
+    account: '신한은행 987-654-321000',
+  },
+];
+
+  const brideAccounts = [
+  {
+    name: '신부 최다정',
+    account: '우리은행 1002-758-980122',
+  },
+  {
+    name: '신부 어머니 서희라',
+    account: '국민은행 123456-78-901234',
+  },
+];
 
   const toggle = (section: string) => {
     setOpen(open === section ? null : section)
   }
 
-  const copy = (text: string) => {
-    navigator.clipboard.writeText(text)
-    alert('계좌번호가 복사되었습니다.')
-  }
+  const copy = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+    setToastMessage('계좌번호가 복사되었습니다.');
+  };
 
   return (
     <section id="gift">
@@ -33,15 +65,17 @@ export default function Gift() {
 
           {open === 'groom' && (
             <div className="gift__content">
-              <div className="gift__item">
-                <div>
-                  <strong>신랑 김성모</strong>
-                  <p>신한은행 1002-000-000000</p>
+              {groomAccounts.map((item, index) => (
+                <div className="gift__item" key={index}>
+                  <div>
+                    <strong>{item.name}</strong>
+                    <p>{item.account}</p>
+                  </div>
+                  <button onClick={() => copy(item.account)}>
+                    복사
+                  </button>
                 </div>
-                <button onClick={() => copy('신한은행 1002-000-000000')}>
-                  복사
-                </button>
-              </div>
+              ))}
             </div>
           )}
         </div>
@@ -54,19 +88,22 @@ export default function Gift() {
 
           {open === 'bride' && (
             <div className="gift__content">
-              <div className="gift__item">
-                <div>
-                  <strong>신부 최다정</strong>
-                  <p>토스뱅크 1000-0000-0000</p>
+              {brideAccounts.map((item, index) => (
+                <div className="gift__item" key={index}>
+                  <div>
+                    <strong>{item.name}</strong>
+                    <p>{item.account}</p>
+                  </div>
+                  <button onClick={() => copy(item.account)}>
+                    복사
+                  </button>
                 </div>
-                <button onClick={() => copy('토스뱅크 1000-0000-0000')}>
-                  복사
-                </button>
-              </div>
+              ))}
             </div>
           )}
         </div>
       </div>
+      
     </section>
   )
 }
