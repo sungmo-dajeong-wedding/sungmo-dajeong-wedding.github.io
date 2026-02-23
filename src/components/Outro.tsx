@@ -1,3 +1,6 @@
+import outroWebp from '../assets/background/outro-2000.webp';
+import outroAvif from '../assets/background/outro-2000.avif';
+
 interface OutroProps {
   setToastMessage: (msg: string) => void;
 }
@@ -10,7 +13,15 @@ export default function Outro({ setToastMessage }: OutroProps) {
   };
 
   return (
-    <section id="outro">
+    <section
+      id="outro"
+      style={{
+        backgroundImage: `image-set(
+          url(${outroAvif}) type("image/avif"),
+          url(${outroWebp}) type("image/webp")
+        )`
+      }}
+    >
       <div className="outro__overlay">
         <div className="outro__content">
           <p className="outro__message">

@@ -7,7 +7,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-image: url('/images/intro.jpg');
+  /* background-image: url('/images/intro.jpg'); */
   background-size: cover;
   background-position: center;
   font-family: 'Noto Serif KR', serif;
@@ -238,10 +238,10 @@
 }
 
 .gallery__modal-img {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 90vw;
+  max-height: 85vh;
   object-fit: contain;
-  transition: opacity 0.2s ease;
+  display: block;
 }
 
 .gallery__nav {
@@ -491,7 +491,9 @@
 #outro {
   position: relative;
   height: 100vh;
-  background: url('/images/gallery/1.jpg') center/cover no-repeat;
+  /* background: url('/images/gallery/1.jpg') center/cover no-repeat; */
+  background-size: cover;
+  background-position: center;
 }
 
 .outro__overlay {
