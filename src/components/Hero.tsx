@@ -1,17 +1,15 @@
-import introWebp from '../assets/background/intro-2000.webp';
-import introAvif from '../assets/background/intro-2000.avif';
+import introWebp from '../assets/background/intro-2000.webp'
+import introAvif from '../assets/background/intro-2000.avif'
 
 const Hero = () => {
   return (
-    <section
-      className="hero"
-      style={{
-        backgroundImage: `image-set(
-          url(${introAvif}) type("image/avif"),
-          url(${introWebp}) type("image/webp")
-        )`
-      }}
-    >
+    <section className="hero">
+      <picture className="hero__bg">
+        <source srcSet={introAvif} type="image/avif" />
+        <source srcSet={introWebp} type="image/webp" />
+        <img src={introWebp} alt="웨딩 사진" />
+      </picture>
+
       <div className="hero__overlay">
         <div className="hero__content">
           <p>We’re Getting Married</p>
@@ -23,7 +21,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
