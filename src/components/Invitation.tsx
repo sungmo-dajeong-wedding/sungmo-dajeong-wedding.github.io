@@ -2,7 +2,9 @@ const Invitation = () => {
   return (
     <section className="invitation section">
       <div className="invitation__inner">
-        <p className="invitation__eyebrow">INVITATION</p>
+        <header className="section-header">
+          <p className="section-header__eyebrow">INVITATION</p>
+        </header>
 
         <div className="invitation__message">
           <p>

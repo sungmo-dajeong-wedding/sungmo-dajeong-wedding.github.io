@@ -61,8 +61,11 @@ const Gallery = () => {
   return (
     <section className="gallery section">
       <div className="gallery__inner">
-        <p className="gallery__eyebrow">GALLERY</p>
-        <h2 className="gallery__title">우리의 소중한 순간</h2>
+        <header className="section-header">
+          <p className="section-header__eyebrow">GALLERY</p>
+          <h2 className="section-header__title">우리의 소중한 순간</h2>
+        </header>
+        
 
         <div className="gallery__grid">
           {images.map((img, index) => (

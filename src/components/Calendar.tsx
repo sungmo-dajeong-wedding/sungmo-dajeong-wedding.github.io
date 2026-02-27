@@ -27,7 +27,9 @@ const Calendar = () => {
   return (
     <section className="calendar section">
       <div className="calendar__inner">
-        <h2 className="calendar__title">WEDDING DAY</h2>
+        <header className="section-header">
+          <p className="section-header__eyebrow">WEDDING DAY</p>
+        </header>
 
         <p className="calendar__date">
           2026.05.03 · 일요일 오전 11:00

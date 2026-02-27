@@ -50,9 +50,10 @@ const Location = () => {
   return (
     <section className="location section" id="location">
       <div className="location__inner">
-
-        <p className="location__eyebrow">LOCATION</p>
-        <h2 className="location__title">오시는 길</h2>
+        <header className="section-header">
+          <p className="section-header__eyebrow">LOCATION</p>
+          <h2 className="section-header__title">오시는 길</h2>
+        </header>
 
         <p className="location__address">
           서울 중구 소공로 51 우리은행 본점 4층
