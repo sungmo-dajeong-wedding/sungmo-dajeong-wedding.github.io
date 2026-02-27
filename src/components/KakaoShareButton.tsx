@@ -16,7 +16,6 @@ export default function KakaoShareButton({
   description = "소중한 분들을 초대합니다.",
   imageUrl,
   path = "/",
-  buttonText = "카카오톡으로 공유",
   className,
   children,
 }: KakaoShareButtonProps) {

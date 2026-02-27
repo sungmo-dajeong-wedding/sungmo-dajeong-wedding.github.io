@@ -32,7 +32,7 @@ const Location = () => {
           map.setCenter(coords);
 
           // 마커 생성
-          const marker = new window.kakao.maps.Marker({
+          new window.kakao.maps.Marker({
             map: map,
             position: coords,
           });
