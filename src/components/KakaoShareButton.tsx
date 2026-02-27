@@ -1,4 +1,5 @@
 import { shareKakaoFeed } from "../lib/kakaoShare";
+import type { ReactNode } from "react";
 
 type KakaoShareButtonProps = {
   title?: string;
@@ -7,6 +8,7 @@ type KakaoShareButtonProps = {
   path?: string;
   buttonText?: string;
   className?: string;
+  children?: ReactNode; 
 };
 
 export default function KakaoShareButton({
@@ -16,6 +18,7 @@ export default function KakaoShareButton({
   path = "/",
   buttonText = "카카오톡으로 공유",
   className,
+  children,
 }: KakaoShareButtonProps) {
   const onClick = () => {
     shareKakaoFeed({
@@ -29,7 +32,7 @@ export default function KakaoShareButton({
 
   return (
     <button type="button" className={className} onClick={onClick}>
-      {buttonText}
+      {children}
     </button>
   );
 }

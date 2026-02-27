@@ -1,6 +1,8 @@
 import outroWebp from '../assets/background/outro-2000.webp';
 import outroAvif from '../assets/background/outro-2000.avif';
 import KakaoShareButton from './KakaoShareButton';
+import { RiKakaoTalkFill } from "react-icons/ri";
+import { FiLink } from "react-icons/fi";
 
 interface OutroProps {
   setToastMessage: (msg: string) => void;
@@ -44,19 +46,28 @@ export default function Outro({ setToastMessage }: OutroProps) {
 
           <div className="outro__buttons">
             <KakaoShareButton
+              className="text-link"
               title="성모 & 다정, 결혼합니다."
               description="2026.05.03 11시 우리은행 본점"
               imageUrl="https://sungmo-dajeong-wedding.github.io/invitation/assets/5-600-DZJXW0FP.webp"
               path="/"
-              buttonText="카카오톡 공유하기"
-            />
-            <button className="link" onClick={copyLink}>
-              링크 복사하기
+            >
+              <span className="text-link-inner">
+                <RiKakaoTalkFill size={18} />
+                카카오톡 공유하기
+              </span>
+            </KakaoShareButton>
+
+            <button className="text-link" onClick={copyLink}>
+              <span className="text-link-inner">
+                <FiLink size={18} />
+                링크 복사하기
+              </span>
             </button>
           </div>
 
           <p className="outro__copyright">
-            © 2026. All rights reserved.
+            © 2026 Dajeong · Developed by Dajeong
           </p>
         </div>
       </div>

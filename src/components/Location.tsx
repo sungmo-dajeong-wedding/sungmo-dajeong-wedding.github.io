@@ -6,41 +6,61 @@ const Location = () => {
   const [activeTab, setActiveTab] = useState<'place' | 'meal' | 'parking'>('place');
 
   useEffect(() => {
-    const loadMap = () => {
-      if (!window.kakao || !window.kakao.maps) return;
+  const loadMap = () => {
+    if (!window.kakao || !window.kakao.maps) return;
 
-      const options = {
-        center: new window.kakao.maps.LatLng(37.5609, 126.9793),
-        level: 3,
-      };
+    const container = mapRef.current;
 
-      const map = new window.kakao.maps.Map(mapRef.current, options);
+    const map = new window.kakao.maps.Map(container, {
+      center: new window.kakao.maps.LatLng(37.5665, 126.9780), // 초기값 (서울시청 근처 아무 좌표)
+      level: 3,
+    });
 
-      const marker = new window.kakao.maps.Marker({
-        position: new window.kakao.maps.LatLng(37.5609, 126.9793),
-      });
+    // 주소-좌표 변환 객체 생성
+    const geocoder = new window.kakao.maps.services.Geocoder();
 
-      marker.setMap(map);
-    };
+    geocoder.addressSearch(
+      "서울 중구 소공로 51 우리은행 본점",
+      (result: any, status: any) => {
+        if (status === window.kakao.maps.services.Status.OK) {
+          const coords = new window.kakao.maps.LatLng(
+            result[0].y,
+            result[0].x
+          );
 
-    if (window.kakao && window.kakao.maps) {
+          // 지도 중심 이동
+          map.setCenter(coords);
+
+          // 마커 생성
+          const marker = new window.kakao.maps.Marker({
+            map: map,
+            position: coords,
+          });
+        }
+      }
+    );
+  };
+
+  if (window.kakao && window.kakao.maps) {
+    loadMap();
+    return;
+  }
+
+  const script = document.createElement("script");
+  const key = import.meta.env.VITE_KAKAO_MAP_KEY;
+
+  // services 라이브러리 추가해야 Geocoder 사용 가능
+  script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${key}&autoload=false&libraries=services`;
+  script.async = true;
+
+  script.onload = () => {
+    window.kakao.maps.load(() => {
       loadMap();
-      return;
-    }
+    });
+  };
 
-    const script = document.createElement('script');
-    const key = import.meta.env.VITE_KAKAO_MAP_KEY;
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${key}&autoload=false`;
-    script.async = true;
-
-    script.onload = () => {
-      window.kakao.maps.load(() => {
-        loadMap();
-      });
-    };
-
-    document.head.appendChild(script);
-  }, []);
+  document.head.appendChild(script);
+}, []);
 
   return (
     <section className="location section" id="location">
@@ -63,7 +83,7 @@ const Location = () => {
         <div className="location__nav">
           <a href="https://map.naver.com/p/search/우리은행본점/place/12127345" target="_blank">네이버지도</a>
           <a href="https://place.map.kakao.com/1310395223" target="_blank">카카오맵</a>
-          <a href="https://www.tmap.co.kr" target="_blank">티맵</a>
+          <a href="https://tmap.life/f8d8d928" target="_blank">티맵</a>
         </div>
 
         {/* 길 정보 */}
