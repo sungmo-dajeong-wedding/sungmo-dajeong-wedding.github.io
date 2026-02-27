@@ -6,7 +6,7 @@ const Invitation = () => {
 
         <div className="invitation__message">
           <p>
-            인턴으로 함께 근무하던 회사에서 <br />
+            함께 근무하던 회사에서 <br />
             서로를 처음 알게 되었습니다.
           </p>
 
