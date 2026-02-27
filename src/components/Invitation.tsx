@@ -1,6 +1,6 @@
 const Invitation = () => {
   return (
-    <section className="invitation section">
+    <section className="invitation section fade-up">
       <div className="invitation__inner">
         <header className="section-header">
           <p className="section-header__eyebrow">INVITATION</p>

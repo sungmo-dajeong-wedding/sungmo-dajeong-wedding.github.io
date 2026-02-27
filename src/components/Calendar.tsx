@@ -25,7 +25,7 @@ const Calendar = () => {
   }, []);
 
   return (
-    <section className="calendar section">
+    <section className="calendar section fade-up">
       <div className="calendar__inner">
         <header className="section-header">
           <p className="section-header__eyebrow">WEDDING DAY</p>

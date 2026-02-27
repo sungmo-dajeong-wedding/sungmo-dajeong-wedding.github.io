@@ -3,7 +3,7 @@ import introAvif from '../assets/background/intro-2000.avif'
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section className="hero fade-up">
       <picture className="hero__bg">
         <source srcSet={introAvif} type="image/avif" />
         <source srcSet={introWebp} type="image/webp" />
@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="hero__overlay">
         <div className="hero__content">
           <p>We’re Getting Married</p>
-          <h1>성모 & 다정</h1>
+          <h1>김성모 & 최다정</h1>
           <p>
             2026.05.03 · SUN · AM 11:00<br />
             우리은행 본점

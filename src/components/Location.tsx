@@ -63,7 +63,7 @@ const Location = () => {
 }, []);
 
   return (
-    <section className="location section" id="location">
+    <section className="location section fade-up" id="location">
       <div className="location__inner">
         <header className="section-header">
           <p className="section-header__eyebrow">LOCATION</p>
