@@ -59,7 +59,7 @@ const Gallery = () => {
   const currentImg = images[current];
 
   return (
-    <section className="gallery section fade-up">
+    <section className="gallery section">
       <div className="gallery__inner">
         <header className="section-header">
           <p className="section-header__eyebrow">GALLERY</p>

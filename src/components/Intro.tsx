@@ -20,7 +20,6 @@ const Intro = ({ onFinish }: IntroProps) => {
   return (
     <div className={`intro ${phase === 'exit' ? 'is-exit' : ''}`} role="presentation">
       <div className="intro__inner">
-        <p className="intro__eyebrow">We’re Getting Married</p>
         <h1 className="intro__title">김성모 &amp; 최다정</h1>
         <p className="intro__meta">2026.05.03 · SUN · AM 11:00</p>
       </div>
