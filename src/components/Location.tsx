@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Transport from "./Transport";
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
-
 const Location = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<'place' | 'meal' | 'parking'>('place');
@@ -35,8 +29,8 @@ const Location = () => {
     }
 
     const script = document.createElement('script');
-    script.src =
-      `https://dapi.kakao.com/v2/maps/sdk.js?appkey=be8e8a4d1436353e833cc80b30de74fa&autoload=false`;
+    const key = import.meta.env.VITE_KAKAO_MAP_KEY;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${key}&autoload=false`;
     script.async = true;
 
     script.onload = () => {
