@@ -13,15 +13,13 @@ export default function Outro({ setToastMessage }: OutroProps) {
   };
 
   return (
-    <section
-      id="outro"
-      style={{
-        backgroundImage: `image-set(
-          url(${outroAvif}) type("image/avif"),
-          url(${outroWebp}) type("image/webp")
-        )`
-      }}
-    >
+    <section id="outro">
+      <picture className="outro__bg">
+        <source srcSet={outroAvif} type="image/avif" />
+        <source srcSet={outroWebp} type="image/webp" />
+        <img src={outroWebp} alt="웨딩 배경" />
+      </picture>
+
       <div className="outro__overlay">
         <div className="outro__content">
           <p className="outro__message">

@@ -15,11 +15,11 @@ export default function Gift({ setToastMessage }: GiftProps) {
   },
   {
     name: '신랑 아버지 김홍기',
-    account: '국민은행 123456-78-901234',
+    account: '하나은행 096-19-11518-7',
   },
   {
     name: '신랑 어머니 이현진',
-    account: '신한은행 987-654-321000',
+    account: '국민은행 650701-01-087343',
   },
 ];
 
@@ -30,7 +30,7 @@ export default function Gift({ setToastMessage }: GiftProps) {
   },
   {
     name: '신부 어머니 서희라',
-    account: '국민은행 123456-78-901234',
+    account: '우리은행 1002-738-982471',
   },
 ];
 

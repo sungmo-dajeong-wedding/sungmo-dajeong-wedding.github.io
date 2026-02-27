@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Transport from "./Transport";
 
 declare global {
   interface Window {
@@ -71,6 +72,9 @@ const Location = () => {
           <a href="https://www.tmap.co.kr" target="_blank">티맵</a>
         </div>
 
+        {/* 길 정보 */}
+        <Transport />
+
         {/* 탭 버튼 */}
         <div className="location__tabs">
           <button
@@ -99,22 +103,22 @@ const Location = () => {
         <div className="location__content">
           {activeTab === 'place' && (
             <ul>
-              <li>본식은 우리은행 본점 4층 웨딩홀에서 진행됩니다.</li>
+              <li>본식은 <mark>우리은행 본점 4층 웨딩홀</mark>에서 진행됩니다.</li>
               <li>신부대기실은 엘리베이터 우측에 있습니다.</li>
             </ul>
           )}
 
           {activeTab === 'meal' && (
             <ul>
-              <li>피로연장은 7층입니다.</li>
+              <li>피로연장은 <mark>우리은행 본점 7층</mark>입니다.</li>
               <li>이용시간: 11:30 ~ 13:00</li>
             </ul>
           )}
 
           {activeTab === 'parking' && (
             <ul>
-              <li>B2 ~ B3층 주차 가능</li>
-              <li>당일 종일 무료 주차</li>
+              <li>우리은행 본점 B2 ~ B3층 주차 가능합니다.</li>
+              <li>L층 로비에서 차량 등록 가능, <mark>당일 종일 무료 주차</mark></li>
             </ul>
           )}
         </div>
