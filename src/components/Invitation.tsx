@@ -1,4 +1,13 @@
 const Invitation = () => {
+
+  const params = new URLSearchParams(window.location.search);
+  const extraInfo = params.get("extraInfo") === "Y";
+
+  const family = [
+  { father: "김홍기", mother: "이현진", label: "의 장남", name: "김성모" },
+  { father: "", mother: "서희라", label: "의 장녀", name: "최다정" },
+];
+
   return (
     <section className="invitation section fade-up">
       <div className="invitation__inner">
@@ -14,7 +23,7 @@ const Invitation = () => {
 
           <p>
             오래전부터 기다려온 사람처럼<br />
-            함꼐할수록 서로를 닮아가며<br /> 더욱 사랑하게 되었습니다.
+            함께할수록 서로를 닮아가며<br /> 더욱 사랑하게 되었습니다.
           </p>
 
           <p>
@@ -26,12 +35,20 @@ const Invitation = () => {
 
         <p className="invitation__sign">- 성모 · 다정 올림 -</p>
 
-        <div className="invitation__family">
-          {/* <p>
-            김홍기 · 이현진 의 장남 <strong>김성모</strong><br />
-            서희라 의 장녀 <strong>최다정</strong>
-          </p> */}
-        </div>
+        {extraInfo && (
+          <div className="invitation__family">
+            {family.map((f, i) => (
+              <div className="family-row" key={i}>
+                <span className="family-parent">{f.father}</span>
+                <span className="family-dot">{f.father ? "·" : ""}</span>
+                <span className="family-parent">{f.mother}</span>
+                <span className="family-label">{f.label}</span>
+                <strong className="family-name">{f.name}</strong>
+              </div>
+            ))}
+          </div>
+        )}
+        
       </div>
     </section>
   );

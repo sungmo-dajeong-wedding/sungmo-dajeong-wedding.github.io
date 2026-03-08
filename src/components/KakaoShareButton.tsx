@@ -20,11 +20,15 @@ export default function KakaoShareButton({
   children,
 }: KakaoShareButtonProps) {
   const onClick = () => {
+
+    const query = window.location.search; // ?extraInfo=Y
+    const sharePath = `${path}${query}`;
+
     shareKakaoFeed({
       title,
       description,
       imageUrl,
-      path,
+      path: sharePath,
       buttonTitle: "청첩장 보기",
     });
   };

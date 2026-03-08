@@ -10,13 +10,25 @@ interface OutroProps {
 
 export default function Outro({ setToastMessage }: OutroProps) {
 
-  const copyLink = async () => {
-  const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
-  const url = siteUrl ? `${siteUrl.replace(/\/$/, "")}/invitation/` : window.location.href;
+  // URL 파라미터 확인
+  const isExtra = new URLSearchParams(window.location.search).get("extraInfo") === "Y";
 
-  await navigator.clipboard.writeText(url);
-  setToastMessage("링크가 복사되었습니다.");
-};
+  // 공유 제목 분기
+  const shareTitle = isExtra
+    ? "김성모 & 최다정, 결혼합니다."
+    : "성모 & 다정, 결혼합니다.";
+
+  const copyLink = async () => {
+    const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined;
+    const query = window.location.search;
+
+    const url = siteUrl
+      ? `${siteUrl.replace(/\/$/, "")}/invitation/${query}`
+      : window.location.href;
+
+    await navigator.clipboard.writeText(url);
+    setToastMessage("링크가 복사되었습니다.");
+  };
 
   return (
     <section id="outro">
@@ -47,7 +59,7 @@ export default function Outro({ setToastMessage }: OutroProps) {
           <div className="outro__buttons">
             <KakaoShareButton
               className="text-link"
-              title="성모 & 다정, 결혼합니다."
+              title={shareTitle}
               description="2026.05.03 11시 우리은행 본점"
               imageUrl="https://sungmo-dajeong-wedding.github.io/invitation/assets/5-600-DZJXW0FP.webp"
               path="/"
@@ -72,5 +84,5 @@ export default function Outro({ setToastMessage }: OutroProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

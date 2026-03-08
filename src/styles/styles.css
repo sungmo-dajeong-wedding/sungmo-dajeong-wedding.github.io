@@ -199,6 +199,28 @@
   color: #444;
 }
 
+.family-row {
+  display: grid;
+  grid-template-columns: 40px 16px 40px 60px auto;
+  justify-content: center;
+  align-items: center;
+  column-gap: 6px;
+}
+
+.family-dot {
+  text-align: center;
+}
+
+.family-label {
+  margin-left: 4px;
+  color: #666;
+}
+
+.family-name {
+  font-weight: 700;
+  margin-left: 6px;
+}
+
 /* ===============================
    CALENDAR
 ================================ */
