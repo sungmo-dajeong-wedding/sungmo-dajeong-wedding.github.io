@@ -9,13 +9,14 @@ import Gallery from './components/Gallery'
 import Location from './components/Location'
 import Gift from './components/Gift'
 import Outro from './components/Outro'
+import Guestbook from './components/Guestbook'
 
 function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null)
   const [showIntro, setShowIntro] = useState(true)
 
   useEffect(() => {
-    // 인트로 중에는 스크롤 잠금(고급스럽게 보이는 포인트)
+    // 인트로 중에는 스크롤 잠금
     document.body.style.overflow = showIntro ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
@@ -52,6 +53,7 @@ function App() {
       <Gallery />
       <Location />
       <Gift setToastMessage={setToastMessage}/>
+      <Guestbook />
       <Outro setToastMessage={setToastMessage}/>
 
       <Toast

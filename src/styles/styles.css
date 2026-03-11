@@ -650,6 +650,138 @@
 }
 
 /* ===============================
+   GUESTBOOK
+================================ */
+
+.guestbook {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.guestbook__title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 28px;
+  letter-spacing: 2px;
+}
+
+/* 입력 카드 */
+
+.guestbook__form {
+  max-width: 420px;
+  margin: 0 auto 28px auto;
+
+  border: 1px solid #eee;
+  border-radius: 18px;
+
+  padding: 22px;
+  background: #fff;
+}
+
+.guestbook__input,
+.guestbook__textarea {
+  width: 100%;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+  font-size: 0.9rem;
+
+  margin-bottom: 12px;
+}
+
+.guestbook__textarea {
+  height: 90px;
+  resize: none;
+}
+
+.guestbook__captcha {
+  margin: 10px 0 14px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.guestbook__submit {
+  width: 100%;
+
+  padding: 13px;
+  border-radius: 14px;
+
+  border: 1px solid #d8d1c6;
+  background: #fff;
+
+  color: #8f7f68;
+  font-size: 0.9rem;
+
+  cursor: pointer;
+}
+
+.guestbook__submit:hover {
+  background: #f9f7f3;
+}
+
+/* 리스트 */
+
+.guestbook__list {
+  max-width: 420px;
+  margin: 0 auto;
+
+  max-height: 200px;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  padding-right: 4px;
+}
+
+/* 메시지 카드 */
+
+.guestbook__item {
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.guestbook__item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.guestbook__name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.guestbook__date {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-right: 3px;
+}
+
+.guestbook__message {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.guestbook__delete {
+  border: none;
+  background: none;
+
+  font-size: 0.75rem;
+  color: #aaa;
+
+  cursor: pointer;
+}
+
+.guestbook__delete:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
    OUTRO
 ================================ */
 
